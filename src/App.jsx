@@ -1,13 +1,14 @@
 import "./App.css";
-import MuliStepForm from "./components/MuliStepForm";
+import MultiStepForm from "./components/MultiStepForm";
+import UserInfoForm from "./components/UserInfoForm";
 
 export default function App() {
-  const componentList = [<Example1 />, <Example2 />, <Example3 />];
+  const componentList = [<UserInfoForm />, <Example2 />, <Example3 />];
 
   return (
-    <div className="flex justify-center flex-col items-center p-6 bg-zinc-700 gap-4">
-      <h1 className="text-3xl font-bold text-lime-400">Image Finder</h1>
-      <MuliStepForm componentList={componentList} />
+    <div className="flex flex-col items-center min-h-screen bg-gray-900 p-4">
+      <h1 className="text-3xl font-bold text-lime-400 mb-8">IMAGE FINDER</h1>
+      <MultiStepForm componentList={componentList} />
     </div>
   );
 }
