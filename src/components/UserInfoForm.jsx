@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserInfo } from "../store/slices/userInfoSlice";
 
-const UserInfoForm = () => {
+const UserInfoForm = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const storeduserData = useSelector((state) => state.user.userData);
 
@@ -46,6 +46,7 @@ const UserInfoForm = () => {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
       dispatch(addUserInfo(userFormData));
+      onNextStep();
     } else {
       setErrors(validationErrors);
     }
@@ -54,7 +55,7 @@ const UserInfoForm = () => {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex flex-col gap-6 p-6 bg-gray-900 text-white shadow-md rounded-lg w-full max-w-md mx-auto"
+      className="flex flex-col self-center gap-6 p-6 bg-gray-900 text-white shadow-md rounded-lg w-full max-w-md mx-auto"
     >
       <label className="flex flex-col">
         <span className="mb-2 text-gray-400">Name:</span>

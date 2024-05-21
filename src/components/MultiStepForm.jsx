@@ -10,6 +10,12 @@ const MultiStepForm = ({ componentList }) => {
     }
   };
 
+  const handlePrevStep = () => {
+    if (currentStep - 1 >= 0) {
+      setCurrentStep((prevStep) => prevStep - 1);
+    }
+  };
+
   const handleCurrentStep = (index) => {
     setCurrentStep(index);
   };
@@ -40,7 +46,10 @@ const MultiStepForm = ({ componentList }) => {
         ></div>
       </div>
       <div className="active-component flex justify-center bg-gray-800 p-6 rounded-lg shadow-inner flex-grow">
-        {componentList[currentStep]}
+        {React.cloneElement(componentList[currentStep], {
+          onNextStep: handleNextStep,
+          onPrevStep: handlePrevStep,
+        })}
       </div>
     </div>
   );

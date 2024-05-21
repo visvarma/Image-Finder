@@ -22,7 +22,9 @@ const useFetch = (fetchFunction, params) => {
   }, [fetchFunction, params]);
 
   useEffect(() => {
-    fetchData();
+    if (params) {
+      fetchData();
+    }
   }, [fetchFunction, params]);
 
   return { data, loading, error, refetch: fetchData };

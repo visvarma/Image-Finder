@@ -3,9 +3,14 @@ import ImageDiscovery from "./components/ImageDiscovery";
 import MultiStepForm from "./components/MultiStepForm";
 import Navbar from "./components/Navbar";
 import UserInfoForm from "./components/UserInfoForm";
+import UserProfleCard from "./components/UserProfleCard";
 
 export default function App() {
-  const componentList = [<UserInfoForm />, <ImageDiscovery />, <Example3 />];
+  const componentList = [
+    <UserInfoForm />,
+    <ImageDiscovery />,
+    <UserProfleCard />,
+  ];
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-900">
@@ -16,13 +21,3 @@ export default function App() {
     </div>
   );
 }
-
-const Example1 = () => {
-  return <h1 className="text-white">step 1</h1>;
-};
-const Example2 = () => {
-  return <h1 className="text-white">step 2</h1>;
-};
-const Example3 = () => {
-  return <h1 className="text-white">step 3</h1>;
-};
