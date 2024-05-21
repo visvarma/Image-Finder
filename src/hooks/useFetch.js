@@ -1,7 +1,7 @@
 // src/hooks/useFetch.js
 import { useState, useEffect, useCallback } from "react";
 
-const useFetch = (fetchFunction, params) => {
+const useFetch = (fetchFunction) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,20 +12,18 @@ const useFetch = (fetchFunction, params) => {
     setError(null);
 
     try {
-      const result = await fetchFunction(params);
+      const result = await fetchFunction();
       setData(result);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
-  }, [fetchFunction, params]);
+  }, [fetchFunction]);
 
   useEffect(() => {
-    if (params) {
-      fetchData();
-    }
-  }, [fetchFunction, params]);
+    fetchData();
+  }, [fetchFunction]);
 
   return { data, loading, error, refetch: fetchData };
 };
