@@ -39,7 +39,7 @@ const ImageDiscovery = ({ onNextStep }) => {
             loading="lazy"
           />
         ) : (
-          <p>Please fill the form in step 1</p>
+          !loading && <p>Please fill the form in step 1</p>
         )}
       </div>
       <div className="mt-8 flex justify-center gap-8">
