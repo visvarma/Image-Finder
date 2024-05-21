@@ -7,15 +7,21 @@ import { addUserSelectedImage } from "../store/slices/userInfoSlice";
 const ImageDiscovery = ({ onNextStep }) => {
   const dispatch = useDispatch();
   const topic = useSelector((state) => state.user.userData.topic);
+  const customTopic = useSelector((state) => state.user.userData.customTopic);
 
-  const fetchImagesCallback = useCallback(() => fetchImages(topic), [topic]);
+  const selectedTopic = topic === "Other" ? customTopic : topic;
+
+  const fetchImagesCallback = useCallback(
+    () => fetchImages(selectedTopic),
+    [selectedTopic]
+  );
 
   const {
     data: imgSrc,
     loading,
     error,
     refetch,
-  } = useFetch(fetchImagesCallback, topic);
+  } = useFetch(fetchImagesCallback);
 
   const handleImageSelect = (selection) => {
     if (selection === "reject") {
@@ -39,7 +45,7 @@ const ImageDiscovery = ({ onNextStep }) => {
             loading="lazy"
           />
         ) : (
-          !loading && <p>Please fill the form in step 1</p>
+          !loading || (!error && <p>Please fill the form in step 1</p>)
         )}
       </div>
       <div className="mt-8 flex justify-center gap-8">
