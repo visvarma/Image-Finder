@@ -35,17 +35,19 @@ const ImageDiscovery = ({ onNextStep }) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-between">
       <div className="flex-grow max-h-full w-full overflow-hidden flex justify-center">
-        {loading && <p className="text-white">Loading...</p>}
-        {error && <p className="text-red-500">Error: {error}</p>}
-        {imgSrc ? (
+        {loading ? (
+          <p className="text-white">Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">Error: {error}</p>
+        ) : imgSrc ? (
           <img
             src={imgSrc}
             className="object-contain"
-            alt={`${topic} image`}
+            alt={`${selectedTopic} image`}
             loading="lazy"
           />
         ) : (
-          !loading || (!error && <p>Please fill the form in step 1</p>)
+          <p className="text-white">Please fill the form in step 1</p>
         )}
       </div>
       <div className="mt-8 flex justify-center gap-8">
