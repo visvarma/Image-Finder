@@ -9,9 +9,12 @@ export const userInfoSlice = createSlice({
     addUserInfo: (state, action) => {
       state.userData = action.payload;
     },
+    addUserSelectedImage: (state, action) => {
+      state.userData.selectedImage = action.payload;
+    },
   },
 });
 
-export const { addUserInfo } = userInfoSlice.actions;
+export const { addUserInfo, addUserSelectedImage } = userInfoSlice.actions;
 
 export default userInfoSlice.reducer;

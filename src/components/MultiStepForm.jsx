@@ -19,7 +19,7 @@ const MultiStepForm = ({ componentList }) => {
   }, [currentStep]);
 
   return (
-    <div className="w-full max-w-screen-lg  border border-gray-700 p-5 bg-gray-900 text-white rounded-lg shadow-lg">
+    <div className="w-full max-w-screen-lg border border-gray-700 p-5 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col">
       <div className="step-indicator mb-10 flex justify-between w-full relative">
         {componentList?.map((_, index) => (
           <button
@@ -39,18 +39,8 @@ const MultiStepForm = ({ componentList }) => {
           style={{ width: `${progressLength}%` }}
         ></div>
       </div>
-      <div className="active-component flex justify-center bg-gray-800 p-6 rounded-lg shadow-inner">
+      <div className="active-component flex justify-center bg-gray-800 p-6 rounded-lg shadow-inner flex-grow">
         {componentList[currentStep]}
-      </div>
-      <div className="flex justify-end mt-6">
-        {currentStep < stepsCount - 1 && (
-          <button
-            onClick={handleNextStep}
-            className="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
-          >
-            Next
-          </button>
-        )}
       </div>
     </div>
   );
