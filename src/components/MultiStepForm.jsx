@@ -43,6 +43,7 @@ const MultiStepForm = ({ componentList }) => {
         <div
           className="step-progress absolute top-1/2 transform -translate-y-1/2 h-1 bg-teal-500"
           style={{ width: `${progressLength}%` }}
+          data-testid="progress-bar"
         ></div>
       </div>
       <div className="active-component flex justify-center bg-gray-800 p-6 rounded-lg shadow-inner flex-grow">

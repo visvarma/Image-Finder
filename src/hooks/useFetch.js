@@ -1,12 +1,13 @@
 // src/hooks/useFetch.js
 import { useState, useEffect, useCallback } from "react";
 
-const useFetch = (fetchFunction) => {
+const useFetch = (fetchFunction, selectedTopic) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
+    if (!selectedTopic) return;
     setLoading(true);
     setData(null);
     setError(null);
@@ -23,7 +24,7 @@ const useFetch = (fetchFunction) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchFunction]);
+  }, [fetchFunction, selectedTopic]);
 
   return { data, loading, error, refetch: fetchData };
 };

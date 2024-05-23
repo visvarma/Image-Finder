@@ -57,11 +57,14 @@ const UserInfoForm = ({ onNextStep }) => {
       onSubmit={handleFormSubmit}
       className="flex flex-col self-center gap-6 p-6 bg-gray-900 text-white shadow-md rounded-lg w-full max-w-md mx-auto"
     >
-      <label className="flex flex-col">
+      <label className="flex flex-col" htmlFor="username">
         <span className="mb-2 text-gray-400">Name:</span>
         <input
+          id="username"
+          data-testid="username-input"
           type="text"
           name="username"
+          placeholder="Name"
           value={userFormData.username}
           onChange={(e) => handleFormInput(e.target.name, e.target.value)}
           className="px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-gray-800 text-white"
@@ -71,11 +74,13 @@ const UserInfoForm = ({ onNextStep }) => {
         )}
       </label>
 
-      <label className="flex flex-col">
+      <label className="flex flex-col" htmlFor="surname">
         <span className="mb-2 text-gray-400">Surname:</span>
         <input
           type="text"
+          id="surname"
           name="surname"
+          placeholder="Surname"
           value={userFormData.surname}
           onChange={(e) => handleFormInput(e.target.name, e.target.value)}
           className="px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-gray-800 text-white"
@@ -85,9 +90,10 @@ const UserInfoForm = ({ onNextStep }) => {
         )}
       </label>
 
-      <label className="flex flex-col">
+      <label className="flex flex-col" htmlFor="topic">
         <span className="mb-2 text-gray-400">Preferred Topic:</span>
         <select
+          id="topic"
           name="topic"
           value={userFormData.topic}
           onChange={(e) => handleFormInput(e.target.name, e.target.value)}
@@ -104,11 +110,13 @@ const UserInfoForm = ({ onNextStep }) => {
       </label>
 
       {userFormData.topic === "Other" && (
-        <label className="flex flex-col">
+        <label className="flex flex-col" htmlFor="customTopic">
           <span className="mb-2 text-gray-400">Custom Topic:</span>
           <input
+            id="customTopic"
             type="text"
             name="customTopic"
+            placeholder="Custom Topic"
             value={userFormData.customTopic}
             onChange={(e) => handleFormInput(e.target.name, e.target.value)}
             className="px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-gray-800 text-white"
