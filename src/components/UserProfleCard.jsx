@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 
 const UserProfleCard = () => {
   const userInfo = useSelector((state) => state.user.userData);
-  const { selectedImage, username, surname } = userInfo;
+  const { selectedImage, username, surname, topic, customTopic } = userInfo;
+
+  const selectedTopic = topic === "Other" ? customTopic : topic;
 
   return (
     <div className="border-2 border-gray-600 p-4 rounded-lg self-center ">
       {selectedImage ? (
-        <img src={selectedImage} />
+        <img src={selectedImage} alt={`${selectedTopic} image`} />
       ) : (
         "Please select the image from Step 2"
       )}

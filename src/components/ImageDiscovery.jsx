@@ -21,7 +21,7 @@ const ImageDiscovery = ({ onNextStep }) => {
     loading,
     error,
     refetch,
-  } = useFetch(fetchImagesCallback);
+  } = useFetch(fetchImagesCallback, selectedTopic);
 
   const handleImageSelect = (selection) => {
     if (selection === "reject") {

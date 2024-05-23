@@ -15,4 +15,14 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./tests/setup.js",
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      reportsDirectory: "./coverage",
+    },
+  },
 });
